@@ -15,5 +15,6 @@ This scripts uses execsnoop from https://github.com/iovisor/bcc/blob/master/tool
 Comment from description: This won't catch all new processes: an application may fork() but not exec().
 
 Requires: Nim >= 1.6.0, python3, python3-bpfcc
+Nim lib: nimble install nimpy
 
 TODO: build Nim to a lib and py script calls function from the lib
