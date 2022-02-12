@@ -5,11 +5,11 @@ import md5
 import posix
 
 
-proc getFileMd5*(file_path: string, checksum: var string): int =
+proc getFileMd5*(file_path: string): string =
   # Safe calculating md5sum without eating memory
   if access(file_path, R_OK) != F_OK:
     stderr.write("[!] File is not readable. Exit!\n")
-    return -1
+    return ""
   else:
     const szBuff = 16384 # 2 ** 14
     var
@@ -28,7 +28,6 @@ proc getFileMd5*(file_path: string, checksum: var string): int =
 
       var digest: MD5Digest
       context.md5Final(digest)
-      checksum = $digest
-      return 0
+      return $digest
     except:
-      return -1
+      return ""
