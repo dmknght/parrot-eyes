@@ -52,13 +52,11 @@ class EyesWatcher:
         event = self.b["events"].event(data)
 
         if event.type == EventType.EVENT_ARG:
-            # path = event.argv.decode()
-            checksum = eyesGetMD5(event.argv.decode())
-            print(f"{event.argv.decode()} {checksum}")
-            if eyesCmpDb(checksum, self.checksum_db):
-                print("Trusted")
-            else:
-                print("Untrusted")
+            path = event.argv.decode()
+            checksum = libeyes.eyesGetMD5(path)
+            print(f"{path} {checksum}")
+            if not libeyes.eyesCmpDb(checksum, self.checksum_db):
+                print(f"Untrusted {checksum} {path}")
 
     def run(self):
         while 1:
