@@ -24,5 +24,7 @@ proc eyesPathFromPID*(pid: int): string {.exportpy.} =
     path is at /proc/<id>/exe (symlink)
     Problem: process stops to quick, can't get this
   ]#
-  let path = "/proc/" & intToStr(pid) & "/exe"
-  return expandSymlink(path)
+  let
+    dir = "/proc/" & intToStr(pid)# & "/exe"
+  if dirExists(dir):
+    return expandSymlink(dir & "/exe")
