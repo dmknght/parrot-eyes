@@ -1,6 +1,5 @@
 import nimpy
 import cores / [gensum, parsedb]
-import sequtils
 
 
 proc eyesGetMD5*(file_path: string): string {.exportpy.} =
