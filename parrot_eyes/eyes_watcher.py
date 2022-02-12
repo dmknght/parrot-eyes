@@ -16,7 +16,6 @@
 # 07-Feb-2016   Brendan Gregg   Created this.
 
 from bcc import BPF
-from bcc.containers import filter_by_containers
 from parrot_eyes import *
 import libeyes
 
