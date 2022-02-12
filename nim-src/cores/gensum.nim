@@ -5,7 +5,7 @@ import md5
 import posix
 
 
-proc getFileMd5(file_path: string, checksum: var string): int =
+proc getFileMd5*(file_path: string, checksum: var string): int =
   # Safe calculating md5sum without eating memory
   if access(file_path, R_OK) != F_OK:
     stderr.write("[!] File is not readable. Exit!\n")
