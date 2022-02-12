@@ -15,4 +15,4 @@ proc getDebChecksums*(): seq[string] =
       for line in lines(path):
         # Line format: <md5sum>  <path>
         # 2 spaces
-        result.add(line.split(" ")[1])
+        result.add(line.split(" ")[0])
