@@ -1,5 +1,6 @@
 import nimpy
 import cores / [gensum, parsedb]
+import sequtils
 
 
 proc eyesGetMD5*(file_path: string): string {.exportpy.} =
@@ -8,3 +9,9 @@ proc eyesGetMD5*(file_path: string): string {.exportpy.} =
 
 proc eyesParseDb*(): seq[string] {.exportpy.} =
   return getDebChecksums()
+
+
+proc eyesCmpDb*(checksum: string, db: seq[string]): bool =
+  if checksum in db:
+    return true
+  return false
